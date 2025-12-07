@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 
@@ -29,12 +30,17 @@ int main() {
 
     string code;;
     long long grand_total = 0;
-
+    
     // Read 12-character strings of hexadecimal characters
     while (file >> code) {
         grand_total += sum_ascii(code);
     }
-    
+
+    file.close();
+
+    // Output the grand total
+    cout << "Grand total ASCII sum = " << grand_total << endl;
+
     return 0;
 }
 
