@@ -30,12 +30,13 @@ int main() {
         return 1;
     }
 
-    string code;;
+    string code;
     long long grand_total = 0;
     
     // Read 12-character strings of hexadecimal characters
     while (file >> code) {
-        grand_total += sum_asci(code);
+        grand_total += gen_hash_index(code);
+
     }
 
     file.close();
@@ -45,7 +46,7 @@ int main() {
 
     // Part Three : Hash Table
     ifstream file2("data.txt");
-    if (!file2.is_open() {
+    if (!file2.is_open()) {
         cout << "Error: could not reopen data file.\n";
         return 1;
     }
@@ -55,13 +56,32 @@ int main() {
 
     while (file2 >> code2) {
         int hash_index = gen_hash_index(code2);
+        hash_table[hash_index].push_back(code2);
     }
 
     file2.close();
   
+cout << "\nFirst 100 hash table entries:\n";
+    int printed = 0;
 
- 
+    for (auto &entry : hash_table) {
+    if (printed >= 100) break;
+
+    cout << "Hash Index: " << entry.first << endl;
+
+    if (!entry.second.empty()) {
+    cout << "   First value: " << entry.second.front() << endl;
 }
+
+
+    cout << endl;  // space between entries
+    printed++;
+   
+}
+    return 0;  
+
+}
+
 
 /* 
 These targets are present in the dataset and can be used for testing:
