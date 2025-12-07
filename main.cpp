@@ -20,14 +20,20 @@ int main() {
     cout << b << endl;
     cout << (char) b << endl;
     
-    // Part One : Testing
-    cout << "\nTesting sum_ascii...\n";
+    // Part Two 
+    ifstream file("data.txt");   // your dataset file
+    if (!file.is_open()) {
+        cout << "Error: could not open data file.\n";
+        return 1;
+    }
 
-    string test1 = "HELLO";
-    cout << "sum_ascii(\"HELLO\") = " << sum_ascii(test1) << endl;
-   
-    string test2 = "ABC";
-    cout << "sum_ascii(\"ABC\") = " << sum_ascii(test2) << endl;
+    string code;;
+    long long grand_total = 0;
+
+    // Read 12-character strings of hexadecimal characters
+    while (file >> code) {
+        grand_total += sum_ascii(code);
+    }
     
     return 0;
 }
