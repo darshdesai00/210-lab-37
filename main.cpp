@@ -1,11 +1,13 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <map>
+#include <list>
 using namespace std;
 
 
-// Part One 
-int sum_ascii(const string &s) {
+// Part Three: hash function
+int gen_hash_index(const string &s) {
     int total = 0;
     for (char c : s) {
         total += (int)c;
@@ -33,7 +35,7 @@ int main() {
     
     // Read 12-character strings of hexadecimal characters
     while (file >> code) {
-        grand_total += sum_ascii(code);
+        grand_total += sum_asci(code);
     }
 
     file.close();
@@ -41,7 +43,24 @@ int main() {
     // Output the grand total
     cout << "Grand total ASCII sum = " << grand_total << endl;
 
-    return 0;
+    // Part Three : Hash Table
+    ifstream file2("data.txt");
+    if (!file2.is_open() {
+        cout << "Error: could not reopen data file.\n";
+        return 1;
+    }
+
+    map<int, list<string>> hash_table;
+    string code2;
+
+    while (file2 >> code2) {
+        int hash_index = gen_hash_index(code2);
+    }
+
+    file2.close();
+  
+
+ 
 }
 
 /* 
