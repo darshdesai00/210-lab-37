@@ -1,6 +1,16 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
+
+// Part One 
+int sum_ascii(const string &s) {
+    int total = 0;
+    for (char c : s) {
+        total += (int)c;
+    }
+    return total;
+}
 
 int main() {
     char a = 'A';
@@ -10,7 +20,15 @@ int main() {
     cout << b << endl;
     cout << (char) b << endl;
     
+    // Part One : Testing
+    cout << "\nTesting sum_ascii...\n";
 
+    string test1 = "HELLO";
+    cout << "sum_ascii(\"HELLO\") = " << sum_ascii(test1) << endl;
+   
+    string test2 = "ABC";
+    cout << "sum_ascii(\"ABC\") = " << sum_ascii(test2) << endl;
+    
     return 0;
 }
 
