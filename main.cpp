@@ -102,6 +102,28 @@ void remove_key(map<int, list<string>> &hash_table) {
     cout << "Key NOT found.\n";
 }
 
+// Milestone 5 
+void modify_key(map<int, list<string>> &hash_table) {
+    string old_key;
+    cout << "Enter key to modify: ";
+    cin >> old_key;
+
+    int old_hash = gen_hash_index(old_key);
+    auto it = hash_table.find(old_hash);
+
+    if (it == hash_table.end()) {
+        cout << "Old key NOT found.\n";
+        return;
+    }
+
+    list<string> &bucket = it->second;
+
+    // search for old key inside list
+    for (auto itr = bucket.begin(); itr != bucket.end(); ++itr) {
+        if (*itr == old_key) {
+        // remove old key
+            
+
 int main() {
     char a = 'A';
     cout << a << endl;
