@@ -61,8 +61,26 @@ void search_key(const map<int, list<string>> &hash_table) {
     cout << "Key NOT found.\n";
 }
 
+// Milestone 3: Add a key
+void add_key(map<int, list<string>> &hash_table) {
+    string newkey;
+    cout << "Enter key to add: ";
+    cin >> newkey;
+
+    int hash_index = gen_hash_index(newkey);
+
+    hash_table[hash_index].push_back(newkey);
+
+    cout << "Key added successfully at hash index " << hash_index << "!\n";
+}
 
 int main() {
+    char a = 'A';
+    cout << a << endl;
+    cout << (int) a << endl;
+    int b = 66;
+    cout << b << endl;
+    cout << (char) b << endl;
     
     // Part Two 
     ifstream file("data.txt");   // your dataset file
@@ -120,6 +138,9 @@ int choice = 0;
         }
         else if (choice == 2) {
             search_key(hash_table);
+        }
+        else if (choice == 3) {
+            add_key(hash_table);
         }
         else if (choice == 6) {
             cout << "Exiting...\n";
