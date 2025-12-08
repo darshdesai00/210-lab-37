@@ -61,7 +61,7 @@ void search_key(const map<int, list<string>> &hash_table) {
     cout << "Key NOT found.\n";
 }
 
-// Milestone 3: Add a key
+// Milestone 3
 void add_key(map<int, list<string>> &hash_table) {
     string newkey;
     cout << "Enter key to add: ";
@@ -72,6 +72,34 @@ void add_key(map<int, list<string>> &hash_table) {
     hash_table[hash_index].push_back(newkey);
 
     cout << "Key added successfully at hash index " << hash_index << "!\n";
+}
+
+
+// Milestone 4
+void remove_key(map<int, list<string>> &hash_table) {
+    string target;
+    cout << "Enter key to remove: ";
+    cin >> target;
+
+    int hash_index = gen_hash_index(target);
+
+    auto it = hash_table.find(hash_index);
+    if (it == hash_table.end()) {
+        cout << "Key NOT found.\n";
+        return;
+    }
+
+    list<string> &bucket = it->second;
+
+    for (auto list_it = bucket.begin(); list_it != bucket.end(); ++list_it) {
+    if (*list_it == target) {
+        bucket.erase(list_it);
+        cout << "Key removed successfully from hash index " << hash_index << "!\n";
+        return;
+        }
+    }
+
+    cout << "Key NOT found.\n";
 }
 
 int main() {
@@ -141,6 +169,9 @@ int choice = 0;
         }
         else if (choice == 3) {
             add_key(hash_table);
+        }
+        else if (choice == 4) {
+            remove_key(hash_table);
         }
         else if (choice == 6) {
             cout << "Exiting...\n";
