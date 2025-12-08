@@ -204,7 +204,7 @@ int choice = 0;
         else if (choice == 3) add_key(hash_table);
         else if (choice == 4) remove_key(hash_table);
         else if (choice == 5) modify_key(hash_table);
-        else if (choice == 6) cout << "Exiting...\n";
+        else if (choice == 6) cout << "Exiting the program\n";
         else cout << "Invalid choice.\n";
     }
 
@@ -216,5 +216,5 @@ These targets are present in the dataset and can be used for testing:
 536B9DFC93AF
 1DA9D64D02A0
 666D109AA22E
-E1D2665B21EA6
+E1D2665B21EA
 */
