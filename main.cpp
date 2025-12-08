@@ -80,27 +80,32 @@ int main() {
 
     file2.close();
   
-cout << "\nFirst 100 hash table entries:\n";
-    int printed = 0;
+int choice = 0;
+    
+    while (choice != 6) {
+        cout << "\n Hash Table Menu \n";
+        cout << "1. Print first 100 entries\n";
+        cout << "2. Search for a key\n";
+        cout << "3. Add a key\n";
+        cout << "4. Remove a key\n";
+        cout << "5. Modify a key\n";
+        cout << "6. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
 
-    for (auto &entry : hash_table) {
-    if (printed >= 100) break;
+        if (choice == 1) {
+            print_first_100(hash_table);
+        }
+        else if (choice == 6) {
+            cout << "Exiting...\n";
+        }
+        else {
+            cout << "Feature not stablished yet.\n";
+        }
+    }
 
-    cout << "Hash Index: " << entry.first << endl;
-
-    if (!entry.second.empty()) {
-    cout << "   First value: " << entry.second.front() << endl;
+    return 0;
 }
-
-
-    cout << endl;  // space between entries
-    printed++;
-   
-}
-    return 0;  
-
-}
-
 
 /* 
 These targets are present in the dataset and can be used for testing:
