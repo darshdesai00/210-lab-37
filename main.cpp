@@ -34,13 +34,35 @@ void print_first_100(const map<int, list<string>> &hash_table) {
     }
 }
 
+// Milestone 2
+void search_key(const map<int, list<string>> &hash_table) {
+    string target;
+    cout << "Enter key to search for: ";
+    cin >> target;
+
+    int hash_index = gen_hash_index(target);
+
+    // Check if hash index exists
+    auto it = hash_table.find(hash_index);
+    if (it == hash_table.end()) {
+        cout << "Key NOT found.\n";
+        return;
+    }
+
+    // Search inside the list (bucket)
+    const list<string> &bucket = it->second;
+    for (const string &val : bucket) {
+        if (val == target) {
+            cout << "Key FOUND in hash index " << hash_index << "!\n";
+            return;
+        }
+    }
+
+    cout << "Key NOT found.\n";
+}
+
+
 int main() {
-    char a = 'A';
-    cout << a << endl;
-    cout << (int) a << endl;
-    int b = 66;
-    cout << b << endl;
-    cout << (char) b << endl;
     
     // Part Two 
     ifstream file("data.txt");   // your dataset file
@@ -96,16 +118,20 @@ int choice = 0;
         if (choice == 1) {
             print_first_100(hash_table);
         }
+        else if (choice == 2) {
+            search_key(hash_table);
+        }
         else if (choice == 6) {
             cout << "Exiting...\n";
         }
         else {
-            cout << "Feature not stablished yet.\n";
+            cout << "Feature not established yet.\n";
         }
     }
 
     return 0;
 }
+
 
 /* 
 These targets are present in the dataset and can be used for testing:
