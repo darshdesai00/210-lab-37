@@ -122,7 +122,23 @@ void modify_key(map<int, list<string>> &hash_table) {
     for (auto itr = bucket.begin(); itr != bucket.end(); ++itr) {
         if (*itr == old_key) {
         // remove old key
-            
+        bucket.erase(itr);
+
+        // ask for new key
+        string new_key;
+        cout << "Enter new key: ";
+        cin >> new_key;
+
+        int new_hash = gen_hash_index(new_key);
+        hash_table[new_hash].push_back(new_key);
+
+        cout << "Key modified successfully!\n";
+        return;
+        }
+    }
+
+    cout << "Old key NOT found.\n";
+}
 
 int main() {
     char a = 'A';
@@ -183,34 +199,22 @@ int choice = 0;
         cout << "Enter choice: ";
         cin >> choice;
 
-        if (choice == 1) {
-            print_first_100(hash_table);
-        }
-        else if (choice == 2) {
-            search_key(hash_table);
-        }
-        else if (choice == 3) {
-            add_key(hash_table);
-        }
-        else if (choice == 4) {
-            remove_key(hash_table);
-        }
-        else if (choice == 6) {
-            cout << "Exiting...\n";
-        }
-        else {
-            cout << "Feature not established yet.\n";
-        }
+        if (choice == 1) print_first_100(hash_table);
+        else if (choice == 2) search_key(hash_table);
+        else if (choice == 3) add_key(hash_table);
+        else if (choice == 4) remove_key(hash_table);
+        else if (choice == 5) modify_key(hash_table);
+        else if (choice == 6) cout << "Exiting...\n";
+        else cout << "Invalid choice.\n";
     }
 
     return 0;
 }
-
 
 /* 
 These targets are present in the dataset and can be used for testing:
 536B9DFC93AF
 1DA9D64D02A0
 666D109AA22E
-E1D2665B21EA
+E1D2665B21EA6
 */
