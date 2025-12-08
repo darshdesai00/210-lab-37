@@ -15,6 +15,25 @@ int gen_hash_index(const string &s) {
     return total;
 }
 
+// Milestone 1
+void print_first_100(const map<int, list<string>> &hash_table) {
+    cout << "\n--- First 100 Hash Table Entries ---\n";
+    int printed = 0;
+
+    for (const auto &entry : hash_table) {
+    if (printed >= 100) break;
+
+    cout << "Hash Index: " << entry.first << endl;
+
+    if (!entry.second.empty()) {
+    cout << "   First value: " << entry.second.front() << endl;
+    }
+
+    cout << endl;
+    printed++;
+    }
+}
+
 int main() {
     char a = 'A';
     cout << a << endl;
